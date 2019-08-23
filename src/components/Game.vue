@@ -1,7 +1,9 @@
 <template>
     <div>
+        <h1>Tic Tac Toe</h1>
         <section class="section-board">
             <board :squares="current" @click="handleClick"></board>
+            <div class="status">{{status}}</div>
         </section>
         <section class="history">
             <h1>Jugadas</h1>
@@ -12,7 +14,6 @@
                 </li>
             </ol>
         </section>
-        <div class="status">{{status}}</div>
     </div>
 </template>
 
@@ -27,32 +28,41 @@
         history: [{
           squares: Array(9).fill(null),
         }],
+        stepNumber: 0,
         xIsNext: true,
       }
     },
     computed: {
       current: function () {
         const history = this.history;
-        return history[history.length - 1].squares;
+        return history[this.stepNumber].squares;
       },
       status: function () {
         const history = this.history;
-        const current = history[history.length - 1];
+        const current = history[this.stepNumber];
         const winner = this.calculateWinner(current.squares);
 
         let message;
         if (winner) {
           message = 'Ganador: ' + winner;
         } else {
-          message = 'Siguiente jugador: ' + (this.xIsNext ? 'X' : 'O');
+          if (this.stepNumber == 9) {
+            message = 'Ha habido un empate'
+          } else {
+            message = 'Siguiente jugador: ' + (this.xIsNext ? 'X' : 'O');
+          }
         }
         return message;
       }
     },
     methods: {
       handleClick: function (i) {
-        const history = this.history;
-        const squares = history[history.length - 1].squares.slice();
+        const history = this.history.slice(0, this.stepNumber + 1);
+        const current = history[history.length - 1];
+        const squares = current.squares.slice();
+
+        // const history = this.history;
+        // const squares = history[history.length - 1].squares.slice();
 
         if (this.calculateWinner(squares) || squares[i]) {
           return;
@@ -61,11 +71,13 @@
         this.history = history.concat([{
           squares: squares,
         }]);
+        this.stepNumber = this.history.length - 1;
         this.xIsNext = !this.xIsNext;
       },
 
       jumpTo: function (step) {
-        console.log(step)
+        this.stepNumber = step;
+        this.xIsNext = (step % 2) === 0;
       },
 
       calculateWinner: function (squares) {
@@ -116,7 +128,8 @@
     }
 
     .status {
-        padding: 20px;
-        clear: both;
+        padding: 40px;
+        text-align: center;
     }
+
 </style>
