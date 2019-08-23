@@ -23,7 +23,7 @@
         font-family: "Berlin Sans FB";
     }
 
-    square:hover {
+    .square:hover {
         background-color: beige;
     }
 
