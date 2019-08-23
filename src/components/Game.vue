@@ -8,7 +8,7 @@
         <section class="history">
             <h1>Jugadas</h1>
             <ol>
-                <li v-for="(move, index) in history" @click="jumpTo(index)">
+                <li v-for="(move, index) in history" @click="jumpTo(index)" :class="{ active: index === stepNumber }">
                     <span class="move" v-if="!index">Ir al inicio</span>
                     <span class="move" v-if="index">Ir a la jugada {{index}}</span>
                 </li>
@@ -125,6 +125,10 @@
 
     .history li:hover {
         background-color: beige;
+    }
+
+    .active {
+        font-weight: bold;
     }
 
     .status {
