@@ -1,9 +1,9 @@
 <template>
     <div class="container">
-        <div class="row" >
+        <div class="row">
             <div class="col-md-9">
                 <board :squares="current" @click="handleClick"></board>
-                <div class="status">{{status}}</div>
+                <div class="status" v-html="status"></div>
             </div>
             <div class="col-md-3">
                 <h3>Jugadas</h3>
@@ -11,7 +11,7 @@
                     <li class="move btn btn-xl btn-outline-light" v-for="(move, index) in history"
                         @click="jumpTo(index)"
                         :class="{ active: index === stepNumber }">
-                        <span v-if="!index">Ir al inicio</span>
+                        <span v-if="!index">Inicio</span>
                         <span v-else>Ir a la jugada {{index}}</span>
                     </li>
                 </ol>
@@ -63,9 +63,6 @@
         const history = this.history.slice(0, this.stepNumber + 1);
         const current = history[history.length - 1];
         const squares = current.squares.slice();
-
-        // const history = this.history;
-        // const squares = history[history.length - 1].squares.slice();
 
         if (this.calculateWinner(squares) || squares[i]) {
           return;
