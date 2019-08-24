@@ -41,7 +41,4 @@
         text-align: center;
         padding: 10px;
     }
-
-    .board-row {
-    }
 </style>

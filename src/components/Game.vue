@@ -1,19 +1,22 @@
 <template>
-    <div>
-        <h1>Tic Tac Toe</h1>
-        <section class="section-board">
-            <board :squares="current" @click="handleClick"></board>
-            <div class="status">{{status}}</div>
-        </section>
-        <section class="history">
-            <h1>Jugadas</h1>
-            <ol>
-                <li v-for="(move, index) in history" @click="jumpTo(index)" :class="{ active: index === stepNumber }">
-                    <span class="move" v-if="!index">Ir al inicio</span>
-                    <span class="move" v-if="index">Ir a la jugada {{index}}</span>
-                </li>
-            </ol>
-        </section>
+    <div class="container">
+        <div class="row" >
+            <div class="col-md-9">
+                <board :squares="current" @click="handleClick"></board>
+                <div class="status">{{status}}</div>
+            </div>
+            <div class="col-md-3">
+                <h3>Jugadas</h3>
+                <ol class="ml-0 pl-0">
+                    <li class="move btn btn-xl btn-outline-light" v-for="(move, index) in history"
+                        @click="jumpTo(index)"
+                        :class="{ active: index === stepNumber }">
+                        <span v-if="!index">Ir al inicio</span>
+                        <span v-else>Ir a la jugada {{index}}</span>
+                    </li>
+                </ol>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -104,36 +107,17 @@
 </script>
 
 <style>
-    * {
-        font-family: "Verdana";
-    }
-
-    .section-board {
-        float: left;
-        width: 70%;
-    }
-
-    .history {
-        float: left;
-        width: 30%;
-    }
-
-    .history li {
+    li.move {
         cursor: pointer;
         padding: 5px;
-    }
-
-    .history li:hover {
-        background-color: beige;
-    }
-
-    .active {
-        font-weight: bold;
+        width: 100%;
+        margin-top: 5px;
+        text-align: left;
+        font-size: 1rem;
     }
 
     .status {
         padding: 40px;
         text-align: center;
     }
-
 </style>

@@ -1,6 +1,6 @@
 {
   "name": "TicTacToe",
-  "description": "Clasico juego del Tic Tac Toe",
+  "description": "Classic game of Tic Tac Toe using Vue.js",
   "version": "1.0.0",
   "author": "Javier Rodríguez <jrolopez20@gmail.com>",
   "license": "MIT",
@@ -10,7 +10,8 @@
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
   },
   "dependencies": {
-    "vue": "^2.5.11"
+    "vue": "^2.5.11",
+    "vue-router": "^3.0.1"
   },
   "browserslist": [
     "> 1%",

@@ -13,21 +13,14 @@
 
 <style>
     .square {
-        width: 70px;
-        height: 70px;
-        background-color: #ffffff;
-        border: 1px solid #000000;
-        font-size: 30px;
+        width: 80px;
+        height: 80px;
+        background-color: transparent;
+        border: 2px solid #ffffff;
+        color: #ffffff;
+        font-size: 40px;
         cursor: pointer;
         margin: 5px;
         font-family: "Berlin Sans FB";
-    }
-
-    .square:hover {
-        background-color: beige;
-    }
-
-    .square:active {
-        background-color: aliceblue;
     }
 </style>
