@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-9">
-                <board :squares="current" @click="handleClick"></board>
+                <board :squares="current" @click="handleClick" :winnerLine="winnerLine"></board>
                 <div class="status" v-html="status"></div>
             </div>
             <div class="col-md-3">
@@ -33,6 +33,7 @@
         }],
         stepNumber: 0,
         xIsNext: true,
+        winnerLine: Array(3).fill(null)
       }
     },
     computed: {
@@ -91,9 +92,11 @@
           [0, 4, 8],
           [2, 4, 6],
         ];
+        this.winnerLine = [null, null, null];
         for (let i = 0; i < lines.length; i++) {
           const [a, b, c] = lines[i];
           if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
+            this.winnerLine = lines[i];
             return squares[a];
           }
         }

@@ -1,20 +1,10 @@
 <template>
     <div class="board">
-        <div class="board-row">
-            <square :value="$props.squares[0]" @click="handleClick(0)"></square>
-            <square :value="$props.squares[1]" @click="handleClick(1)"></square>
-            <square :value="$props.squares[2]" @click="handleClick(2)"></square>
-        </div>
-        <div class="board-row">
-            <square :value="$props.squares[3]" @click="handleClick(3)"></square>
-            <square :value="$props.squares[4]" @click="handleClick(4)"></square>
-            <square :value="$props.squares[5]" @click="handleClick(5)"></square>
-        </div>
-        <div class="board-row">
-            <square :value="$props.squares[6]" @click="handleClick(6)"></square>
-            <square :value="$props.squares[7]" @click="handleClick(7)"></square>
-            <square :value="$props.squares[8]" @click="handleClick(8)"></square>
-        </div>
+        <template v-for="(item, index) in $props.squares">
+            <square :value="item" @click="handleClick(index)"
+                    :class="{ winnerSquare: checkWinnerSquare (index) }"></square>
+            <br v-if="(index+1)%3==0">
+        </template>
     </div>
 </template>
 
@@ -25,13 +15,24 @@
     name: 'board',
     components: {Square},
     props: {
-      squares: null
+      squares: null,
+      winnerLine: null
     },
+
+    computed: {},
 
     methods: {
       handleClick: function (i) {
         this.$emit('click', i);
       },
+      checkWinnerSquare: function (v) {
+        for (let i of this.$props.winnerLine) {
+          if (i === v) {
+            return true
+          }
+        }
+        return false
+      }
     }
   }
 </script>
@@ -40,5 +41,9 @@
     .board {
         text-align: center;
         padding: 10px;
+    }
+
+    .winnerSquare {
+        color: orangered !important;
     }
 </style>
