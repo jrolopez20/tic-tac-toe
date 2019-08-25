@@ -12,13 +12,13 @@
                 <div class="collapse navbar-collapse text-uppercase" id="navbarResponsive">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item mx-0 mx-lg-1">
-                            <router-link :to="{name: 'game'}" class="nav-link py-3 px-0 px-lg-3 rounded "
+                            <router-link :to="{name: 'game'}" class="nav-link py-3 px-2 px-lg-3 rounded "
                                          :class="{ 'link-active': '/'===window.location.pathname }">
                                 Juego
                             </router-link>
                         </li>
                         <li class="nav-item mx-0 mx-lg-1">
-                            <router-link :to="{name: 'about'}" class="nav-link py-3 px-0 px-lg-3 rounded"
+                            <router-link :to="{name: 'about'}" class="nav-link py-3 px-2 px-lg-3 rounded"
                                          :class="{ 'link-active': '/about'===window.location.pathname }">Acerca De
                             </router-link>
                         </li>

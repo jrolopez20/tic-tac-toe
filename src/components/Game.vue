@@ -6,7 +6,14 @@
                 <div class="status" v-html="status"></div>
             </div>
             <div class="col-md-3">
-                <h3>Jugadas</h3>
+                <h3>Jugadas
+                    <span class="text-right float-right">
+                    <a href="#" class="text-light" @click="prevMove" v-if="stepNumber>0"><i
+                            class="fas fa-arrow-alt-circle-left"></i></a>
+                    <a href="#" class="text-light" @click="nextMove" v-if="(history.length - (stepNumber+1)) > 0"><i
+                            class="fas fa-arrow-alt-circle-right"></i></a>
+                    </span>
+                </h3>
                 <ol class="ml-0 pl-0">
                     <li class="move btn btn-xl btn-outline-light" v-for="(move, index) in history"
                         @click="jumpTo(index)"
@@ -79,6 +86,15 @@
       jumpTo: function (step) {
         this.stepNumber = step;
         this.xIsNext = (step % 2) === 0;
+      },
+
+      nextMove: function () {
+        this.stepNumber++;
+        this.xIsNext = (this.stepNumber % 2) === 0;
+      },
+      prevMove: function () {
+        this.stepNumber--;
+        this.xIsNext = (this.stepNumber % 2) === 0;
       },
 
       calculateWinner: function (squares) {
