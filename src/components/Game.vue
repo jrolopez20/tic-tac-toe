@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-md-9">
                 <board :squares="current" @click="handleClick" :winnerLine="winnerLine"></board>
-                <div class="status" v-html="status"></div>
+                <div class="status">{{status}}</div>
             </div>
             <div class="col-md-3">
                 <h3>Jugadas
