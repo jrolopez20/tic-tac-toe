@@ -27,7 +27,9 @@
             </div>
         </nav>
         <div style="margin-top: 150px">
-            <router-view/>
+            <keep-alive>
+                <router-view/>
+            </keep-alive>
         </div>
     </div>
 </template>
