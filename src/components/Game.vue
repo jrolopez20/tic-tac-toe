@@ -8,9 +8,9 @@
             <div class="col-md-3">
                 <h3>Jugadas
                     <span class="text-right float-right">
-                    <a href="#" class="text-light" @click="prevMove" v-if="stepNumber>0"><i
+                    <a href="#" class="text-light" @click.prevent="prevMove" v-if="stepNumber>0"><i
                             class="fas fa-arrow-alt-circle-left"></i></a>
-                    <a href="#" class="text-light" @click="nextMove" v-if="(history.length - (stepNumber+1)) > 0"><i
+                    <a href="#" class="text-light" @click.prevent="nextMove" v-if="(history.length - (stepNumber+1)) > 0"><i
                             class="fas fa-arrow-alt-circle-right"></i></a>
                     </span>
                 </h3>
