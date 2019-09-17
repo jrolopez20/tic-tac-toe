@@ -1,6 +1,6 @@
 # TicTacToe
 
-> Implementación en VueJs del clásico juego del Tic Tac Toe
+> Tic Tac Toe game using Vue.js
 
 ## Build Setup
 
